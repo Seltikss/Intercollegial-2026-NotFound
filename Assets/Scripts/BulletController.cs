@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -24,10 +25,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log(other.gameObject.name);
-        }
+        Debug.Log(other.gameObject.name);
         
         switch (other.gameObject.tag)
         {
@@ -39,6 +37,12 @@ public class BulletController : MonoBehaviour
                 Destroy(other.gameObject);
                 break;
         }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log(other.gameObject.name + " Collision");
     }
 
 
