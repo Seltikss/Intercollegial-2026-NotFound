@@ -26,6 +26,7 @@ public class RoomsGeneration : MonoBehaviour
     public int WALL_SPLIT_RNG = 2;
 
     public GameObject DOT;
+    public GameObject Room;
 
     void Start()
     {
