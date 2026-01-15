@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int DETECTION_RADIUS = 10;
     public string playerTag = "Player";
     public float enemySpeed = 1.0f;
+
 
     void FixedUpdate()
     {
