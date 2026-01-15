@@ -5,8 +5,8 @@ using static UnityEditor.PlayerSettings;
 
 public class RoomsGeneration : MonoBehaviour
 {
-    public const int MAP_HEIGHT = 500;
-    public const int MAP_WIDTH = 500;
+    public const int MAP_HEIGHT = 20;
+    public const int MAP_WIDTH = 20;
     [SerializeField] public bool[] availableNodes;
 
     private List<Vector2> Directions = new List<Vector2> { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
@@ -22,10 +22,11 @@ public class RoomsGeneration : MonoBehaviour
     public List<int> unblockedRooms = new List<int>();
 
     public Vector2 START_POINT = Vector2.zero;
-    public int MAX_ROOMS = 1000;
+    public int MAX_ROOMS = 15;
     public int WALL_SPLIT_RNG = 2;
 
     public GameObject DOT;
+    public GameObject Room;
 
     void Start()
     {
@@ -92,6 +93,7 @@ public class RoomsGeneration : MonoBehaviour
             unblockedRooms.Add(allAvailableRooms.IndexOf(currentRoom));
             jumpedOnRoom = false;
         }
+        AddBossRoom(allAvailableRooms);
         DrawDots();
     }
 
@@ -148,11 +150,24 @@ public class RoomsGeneration : MonoBehaviour
         return true;
     }
 
-    private Rooms JumpOnRoom()
+    private void AddBossRoom(List<Rooms> rooms)
     {
-        int newRoomIndex = Random.Range(1, allAvailableRooms.Count - 1);
-        return allAvailableRooms[newRoomIndex];
-    }
+        bool hasSetBoosDoor = false;
+        for (int i = rooms.Count - 1; i >= 0; i--)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (rooms[i].roomLayout[j] == 0)
+                {
+                    rooms[i].roomLayout[j] = 3;
+                    hasSetBoosDoor = true;
+                    break;
+                }
+            }
+            if (hasSetBoosDoor)
+                break;
+        }
+    }  
 
     private void DrawDots()
     {
