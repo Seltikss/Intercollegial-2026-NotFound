@@ -23,7 +23,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Move(Vector3 playerPos)
     {
-        Debug.Log("asdfasdfasdf");
         Vector3 dir = (playerPos - transform.position);
         dir.Normalize();
         Vector3 velocity = dir * enemySpeed * Time.fixedDeltaTime;

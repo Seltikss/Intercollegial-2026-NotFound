@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -12,7 +13,7 @@ namespace Player
         public const int MAX_HEALTH = 10;
         public const int MAX_BULLET = 10;
 
-        public UnityEvent onPlayerKilled;
+        public UnityEvent onPlayerKilled = new UnityEvent();
     
         [SerializeField] private TimerManager timerManager;
     
@@ -37,7 +38,10 @@ namespace Player
         
             health -= damage;
             if (health <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
                 onPlayerKilled.Invoke();
+            }
             else
                 timerManager.StartTimer(IMMUNITY_TIMER_ID);
         }
