@@ -13,7 +13,7 @@ namespace Player
         private const string POISON_TAG = "Poison";
     
         public const int MAX_HEALTH = 10;
-        public const int MAX_BULLET = 10;
+        public const int MAX_BULLET = 5;
         public const int MAX_POISON = 50;
 
         public UnityEvent onPlayerKilled = new UnityEvent();
@@ -24,7 +24,7 @@ namespace Player
         [SerializeField] private float c_poisonTime = 0.5f;
     
         [HideInInspector] public int health { get; private set; } = MAX_HEALTH;
-        [HideInInspector] public int bullet = MAX_BULLET;
+        [HideInInspector] private int bullet  = MAX_BULLET;
         [HideInInspector] public int poison = 0;
     
         private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
@@ -35,6 +35,9 @@ namespace Player
         {
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
             timerManager.AddTimer(POISON_TIMER_ID, c_poisonTime);
+            
+            GuiController.instance.SetHealth(health);
+            GuiController.instance.SetPoison(poison);
         }
 
 
@@ -58,6 +61,7 @@ namespace Player
                 return;
         
             health -= damage;
+            GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
@@ -71,6 +75,7 @@ namespace Player
         public void ResetHealth()
         {
             health = MAX_HEALTH;
+            GuiController.instance.SetHealth(health);
         }
 
 
@@ -78,11 +83,19 @@ namespace Player
         {
             return bullet > 0;
         }
+
+
+        public void RemoveBullet()
+        {
+            bullet -= 1;
+            GuiController.instance.SetBulletLeft(bullet);
+        }
     
 
         public void ResetBullet()
         {
             bullet = MAX_BULLET;
+            GuiController.instance.SetBulletLeft(bullet);
         }
 
 
@@ -107,9 +120,8 @@ namespace Player
                     poison--;
                     timerManager.StartTimer(POISON_TIMER_ID);
                 }
+                GuiController.instance.SetPoison(poison);
             }
-            
-            Debug.Log(poison);
             
             if (poison == MAX_POISON)
                 TakeDamage(1);

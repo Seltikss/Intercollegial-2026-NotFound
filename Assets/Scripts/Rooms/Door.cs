@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isOpen && collision.transform.CompareTag("Player"))
+        if (isOpen && collision.transform.CompareTag("Player") && collision.GetComponent<PlayerController>().isLocked == false)
         {
             collision.GetComponent<CircleCollider2D>().isTrigger = true;
             collision.GetComponent<PlayerController>().isLocked = true;
