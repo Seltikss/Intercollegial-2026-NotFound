@@ -506,6 +506,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 233227874}
     m_Modifications:
+    - target: {fileID: 1075828040799208405, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075828040799208405, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 720053462}
+    - target: {fileID: 1075828040799208405, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDashRebindClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075828040799208405, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2313021523109081025, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
       propertyPath: dashInput
       value: 
@@ -937,6 +953,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3935511875199144152, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
   m_PrefabInstance: {fileID: 299397321}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &720053462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2313021523109081025, guid: bd4577fd187588949b7e1a38be8d4a7e, type: 3}
+  m_PrefabInstance: {fileID: 299397321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720053458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe38ed39a9de49b4b8fe731e93f6c502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026792561
 GameObject:
   m_ObjectHideFlags: 0
