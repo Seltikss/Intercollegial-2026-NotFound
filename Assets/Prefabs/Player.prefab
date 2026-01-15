@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6075314934867558006}
   - component: {fileID: 5417471851177885522}
   - component: {fileID: 4328536494837252280}
+  - component: {fileID: 4321745921901958220}
   - component: {fileID: 1317599628443707605}
   - component: {fileID: 6902486081644814887}
   - component: {fileID: 7816727951780689516}
@@ -156,6 +157,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4321745921901958220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865518499621113132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44c3cc7aab3464990848592991223b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveInput: {fileID: 0}
+  dashInput: {fileID: 0}
+  shootInput: {fileID: 0}
+  reloadInput: {fileID: 0}
+  interactInput: {fileID: 0}
 --- !u!114 &1317599628443707605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,12 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletInstance: {fileID: 7796700023579545104}
-  moveInput: {fileID: 0}
-  dashInput: {fileID: 0}
-  shootInput: {fileID: 0}
-  reloadInput: {fileID: 0}
   transform: {fileID: 5338391838428599819}
   rigidBody: {fileID: 4328536494837252280}
+  playerInput: {fileID: 4321745921901958220}
   playerData: {fileID: 6902486081644814887}
   timerManager: {fileID: 7816727951780689516}
   c_maxSpeed: 10
@@ -195,9 +210,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6641aafe3b810cd45b0463566bde2f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerKilled:
+    m_PersistentCalls:
+      m_Calls: []
   timerManager: {fileID: 7816727951780689516}
   c_immunityTime: 0.5
   bullet: 10
+  nearestItem: {fileID: 0}
 --- !u!114 &7816727951780689516
 MonoBehaviour:
   m_ObjectHideFlags: 0

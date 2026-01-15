@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,7 @@ public class TimerManager : MonoBehaviour
         public float time;
         public float timeLeft { get; private set; } = 0.0f;
 
-        public UnityEvent onFinished;
+        public UnityEvent onFinished = new UnityEvent();
 
 
         public Timer(float t)
@@ -37,31 +38,40 @@ public class TimerManager : MonoBehaviour
             }
         }
     }
-    
-    public Timer[] timersArray = {};
+
+    private List<string> timersIds = new List<string>(); 
+    private List<Timer> timersArray = new List<Timer>();
 
 
-    public void SetTimerTime(int id, float time)
+    public void AddTimer(string id, float time)
     {
-        timersArray[id].time = time;
-    }
-    
-
-    public void StartTimer(int id)
-    {
-        timersArray[id].Start();
+        timersIds.Add(id);
+        Timer timer = new Timer(time);
+        timersArray.Add(timer);
     }
 
 
-    public bool IsStopped(int id)
+    public Timer GetTimer(string id)
     {
-        return !timersArray[id].enabled;
+        return timersArray[timersIds.IndexOf(id)];
+    }
+    
+
+    public void StartTimer(string id)
+    {
+        timersArray[timersIds.IndexOf(id)].Start();
+    }
+
+
+    public bool IsStopped(string id)
+    {
+        return !timersArray[timersIds.IndexOf(id)].enabled;
     }
     
 
     private void Update()
     {
-        for (int i = 0; i < timersArray.Length; i++)
+        for (int i = 0; i < timersArray.Count; i++)
         {
             if (timersArray[i].enabled)
             {

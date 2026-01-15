@@ -4,24 +4,21 @@ using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    private const int DASH_DURATION_TIMER_ID = 0;
-    private const int DASH_COOLDOWN_TIMER_ID = 1;
-    private const int GUN_COOLDOWN_TIMER_ID = 2;
-    private const int RELOAD_DURATION_TIMER_ID = 3;
+    public class PlayerController : MonoBehaviour
+{
+    private const string DASH_DURATION_TIMER_ID = "DASH_DUR_TIMER";
+    private const string DASH_COOLDOWN_TIMER_ID = "DASH_COOL_TIMER";
+    private const string GUN_COOLDOWN_TIMER_ID = "GUN_TIMER";
+    private const string RELOAD_DURATION_TIMER_ID = "RELOAD_TIMER";
     
     [SerializeField] private GameObject bulletInstance;
-    
-    [Header("Input Action References")]
-    [SerializeField] private InputActionReference moveInput;
-    [SerializeField] private InputActionReference dashInput;
-    [SerializeField] private InputActionReference shootInput;
-    [SerializeField] private InputActionReference reloadInput;
     
     [Header("Components")]
     [SerializeField] private Transform transform;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private TimerManager timerManager;
     
@@ -34,30 +31,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float c_gunCooldown = 0.5f;
     [SerializeField] private float c_reloadDuration = 0.5f;
     
+    [SerializeField] private float c_interactRadius = 0.5f;
+    [SerializeField] private float c_interactDist = 0.5f;
+    
     private Vector2 velocity = Vector2.zero;
     
-    private bool hasShoot = false;
     private bool isDashing = false;
 
 
     private void Start()
     {
-        timerManager.SetTimerTime(DASH_DURATION_TIMER_ID, c_dashTime);
-        timerManager.SetTimerTime(DASH_COOLDOWN_TIMER_ID, c_dashCooldown);
-        timerManager.SetTimerTime(GUN_COOLDOWN_TIMER_ID, c_gunCooldown);
-        timerManager.SetTimerTime(RELOAD_DURATION_TIMER_ID, c_reloadDuration);
-    }
-
-
-    private Vector2 GetInputDirection()
-    {
-        return moveInput.action.ReadValue<Vector2>();
-    }
-
-
-    private void Update()
-    {
-        //Make input buffer and put input here
+        timerManager.AddTimer(DASH_DURATION_TIMER_ID, c_dashTime);
+        timerManager.AddTimer(DASH_COOLDOWN_TIMER_ID, c_dashCooldown);
+        timerManager.AddTimer(GUN_COOLDOWN_TIMER_ID, c_gunCooldown);
+        timerManager.AddTimer(RELOAD_DURATION_TIMER_ID, c_reloadDuration);
+        timerManager.GetTimer(RELOAD_DURATION_TIMER_ID).onFinished.AddListener(playerData.ResetBullet);
     }
 
 
@@ -87,14 +75,14 @@ public class PlayerController : MonoBehaviour
 
     private bool CanShoot()
     {
-        return shootInput.action.IsPressed() && timerManager.IsStopped(GUN_COOLDOWN_TIMER_ID);
+        return playerInput.isShootPressed && timerManager.IsStopped(GUN_COOLDOWN_TIMER_ID);
     }
 
 
     private bool CanDash()
     {
         // isDashing
-        return !isDashing && dashInput.action.IsPressed() && timerManager.IsStopped(DASH_COOLDOWN_TIMER_ID);
+        return !isDashing && playerInput.isDashPressed && timerManager.IsStopped(DASH_COOLDOWN_TIMER_ID);
     }
     
 
@@ -102,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanDash())
         {
-            velocity = GetInputDirection() * c_dashForce;
+            velocity = playerInput.moveVector * c_dashForce;
             // nextDashTime = Time.time + c_dashTime;
             timerManager.StartTimer(DASH_DURATION_TIMER_ID);
             isDashing = true;
@@ -119,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (!isDashing)
         {
-            velocity = GetInputDirection() * c_maxSpeed;
+            velocity = playerInput.moveVector * c_maxSpeed;
         }
         
         rigidBody.MovePosition(rigidBody.position + (velocity * Time.fixedDeltaTime));
@@ -130,7 +118,6 @@ public class PlayerController : MonoBehaviour
     {
         MovementProcess();
         
-        //Maybe input buffer
         if (CanShoot())
         {
             if (playerData.HasBullet())
@@ -138,9 +125,23 @@ public class PlayerController : MonoBehaviour
             else
                 ReloadGun();
         }
-        else if (reloadInput.action.IsPressed())
+        else if (playerInput.isReloadJustPressed)
         {
             ReloadGun();
         }
+        else if (playerInput.isInteractJustPressed)
+        {
+            Vector2 pos = transform.position.ConvertTo<Vector2>() + GetMouseDirection() * c_interactDist;
+            var result = Physics2D.OverlapCircleAll(pos, c_interactRadius);
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
+                {
+                    playerData.PickUpObjectiveItem(item);
+                }
+            }
+        }
     }
 }
+}
+
