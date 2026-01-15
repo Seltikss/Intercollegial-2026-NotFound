@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 6075314934867558006}
   - component: {fileID: 5417471851177885522}
   - component: {fileID: 4328536494837252280}
+  - component: {fileID: 4321745921901958220}
   - component: {fileID: 1317599628443707605}
   - component: {fileID: 6902486081644814887}
+  - component: {fileID: 7737942587585537436}
   - component: {fileID: 7816727951780689516}
   m_Layer: 0
   m_Name: Player
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 6454490000420998888, guid: 0c8491fdd68e18c42a8eafbdf796f3fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,6 +158,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4321745921901958220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865518499621113132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44c3cc7aab3464990848592991223b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveInput: {fileID: 0}
+  dashInput: {fileID: 0}
+  shootInput: {fileID: 0}
+  reloadInput: {fileID: 0}
+  interactInput: {fileID: 0}
 --- !u!114 &1317599628443707605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,12 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletInstance: {fileID: 7796700023579545104}
-  moveInput: {fileID: 0}
-  dashInput: {fileID: 0}
-  shootInput: {fileID: 0}
-  reloadInput: {fileID: 0}
   transform: {fileID: 5338391838428599819}
   rigidBody: {fileID: 4328536494837252280}
+  playerInput: {fileID: 4321745921901958220}
   playerData: {fileID: 6902486081644814887}
   timerManager: {fileID: 7816727951780689516}
   c_maxSpeed: 10
@@ -183,6 +199,8 @@ MonoBehaviour:
   c_dashCooldown: 0.5
   c_gunCooldown: 0.2
   c_reloadDuration: 1
+  c_interactRadius: 0.5
+  c_interactDist: 0.5
 --- !u!114 &6902486081644814887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,9 +213,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6641aafe3b810cd45b0463566bde2f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerKilled:
+    m_PersistentCalls:
+      m_Calls: []
   timerManager: {fileID: 7816727951780689516}
   c_immunityTime: 0.5
   bullet: 10
+--- !u!114 &7737942587585537436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865518499621113132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75bb0417e2befde4387cc88d2470cec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 4321745921901958220}
 --- !u!114 &7816727951780689516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,35 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b924695c4183c97408dfbb602a384d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timersArray:
-  - time: 0.1
-    onFinished:
-      m_PersistentCalls:
-        m_Calls: []
-  - time: 0.1
-    onFinished:
-      m_PersistentCalls:
-        m_Calls: []
-  - time: 0.1
-    onFinished:
-      m_PersistentCalls:
-        m_Calls: []
-  - time: 0.1
-    onFinished:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6902486081644814887}
-          m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
-          m_MethodName: ResetBullet
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &1261799171025681350
 PrefabInstance:
   m_ObjectHideFlags: 0

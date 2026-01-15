@@ -9,6 +9,19 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
 
+
+    public void OnSettingClick()
+    {
+        
+    }
+
+
+    public void OnSettingBack()
+    {
+        
+    }
+
+        
     public void Quit()
     {
         Application.Quit();
