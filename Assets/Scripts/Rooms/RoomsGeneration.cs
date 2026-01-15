@@ -34,7 +34,7 @@ public class RoomsGeneration : MonoBehaviour
     public GameObject Door_Left;
 
     public List<GameObject> doors = new List<GameObject>();
-    public List<Vector2> doorsOffset = new List<Vector2>() { new Vector2(0f, 4f), new Vector2(8f, 0f), new Vector2(0f, -4f), new Vector2(-8f, 0f) };
+    public List<Vector2> doorsOffset = new List<Vector2>() { new Vector2(0f, 0.7f), new Vector2(1.6f, 0f), new Vector2(0f, -0.7f), new Vector2(-1.6f, 0f) };
 
     void Start()
     {
@@ -193,7 +193,7 @@ public class RoomsGeneration : MonoBehaviour
         for (int i = 0; i < allAvailableRooms.Count; i++)
         {
             GameObject currentRoom = Instantiate(Room, this.transform);
-            currentRoom.transform.position = new Vector3(allAvailableRooms[i].GridPos.x * 17, allAvailableRooms[i].GridPos.y * 9, 0f);
+            currentRoom.transform.position = new Vector3(allAvailableRooms[i].GridPos.x * 2.72f, allAvailableRooms[i].GridPos.y * 1.44f, 0f);
             for (int j = 0; j < 4; j++)
             {
                 int[] walls = allAvailableRooms[i].roomLayout;
