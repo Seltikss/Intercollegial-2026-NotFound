@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     public class PlayerController : MonoBehaviour
+
     {
         private const string DASH_DURATION_TIMER_ID = "DASH_DUR_TIMER";
         private const string DASH_COOLDOWN_TIMER_ID = "DASH_COOL_TIMER";
@@ -40,6 +41,62 @@ namespace Player
 
 
         private void Start()
+    private void ShootBullet()
+    {
+        timerManager.StartTimer(GUN_COOLDOWN_TIMER_ID);
+        playerData.bullet -= 1;
+        GameObject bullet = Instantiate(bulletInstance, transform.position, new Quaternion());
+        bullet.GetComponent<BulletController>().InitializeBullet(playerInput.GetMouseDirection());
+    }
+
+
+    private void ReloadGun()
+    {
+        if (timerManager.IsStopped(RELOAD_DURATION_TIMER_ID))
+            timerManager.StartTimer(RELOAD_DURATION_TIMER_ID);
+    }
+
+
+    private void Interact()
+    {
+        Vector2 pos = transform.position.ConvertTo<Vector2>() + playerInput.GetMouseDirection() * c_interactDist;
+        var result = Physics2D.OverlapCircleAll(pos, c_interactRadius);
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
+            {
+                playerData.PickUpObjectiveItem(item);
+            }
+            else if (result[i].transform.CompareTag("Door"))
+            {
+                doorManager.OpenDoor();
+            }
+        }
+    }
+
+
+    private bool CanShoot()
+    {
+        return playerInput.isShootPressed && timerManager.IsStopped(GUN_COOLDOWN_TIMER_ID);
+    }
+
+
+    private bool CanDash()
+    {
+        // isDashing
+        return !isDashing && playerInput.isDashPressed && timerManager.IsStopped(DASH_COOLDOWN_TIMER_ID);
+    }
+
+
+    public void SetVelocity(Vector2 dir)
+    {
+        velocity = c_maxSpeed * Time.fixedDeltaTime * dir;
+    }
+
+
+    private void ApplyVelocity()
+    {
+        if (CanDash())
         {
             timerManager.AddTimer(DASH_DURATION_TIMER_ID, c_dashTime);
             timerManager.AddTimer(DASH_COOLDOWN_TIMER_ID, c_dashCooldown);
@@ -150,6 +207,7 @@ namespace Player
                     }
                 }
             }
+            Interact();
         }
     }
 }

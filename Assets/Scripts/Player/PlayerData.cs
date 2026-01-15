@@ -35,6 +35,9 @@ namespace Player
         {
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
             timerManager.AddTimer(POISON_TIMER_ID, c_poisonTime);
+            
+            GuiController.instance.SetHealth(health);
+            GuiController.instance.SetPoison(poison);
         }
 
 
@@ -58,6 +61,7 @@ namespace Player
                 return;
         
             health -= damage;
+            GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
@@ -107,9 +111,8 @@ namespace Player
                     poison--;
                     timerManager.StartTimer(POISON_TIMER_ID);
                 }
+                GuiController.instance.SetPoison(poison);
             }
-            
-            Debug.Log(poison);
             
             if (poison == MAX_POISON)
                 TakeDamage(1);
