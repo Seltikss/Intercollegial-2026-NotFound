@@ -101,10 +101,10 @@ public class RoomsGeneration : MonoBehaviour
                 }
                 break;
             }
-            //if (i == MAX_ROOMS - 1)
-            //    for (int j = 0; j < 4; j++)
-            //        if (currentRoom.roomLayout[j] == 2)
-            //            currentRoom.roomLayout[j] = 0;
+            if (i == MAX_ROOMS - 1)
+                for (int j = 0; j < 4; j++)
+                    if (currentRoom.roomLayout[j] == 2)
+                        currentRoom.roomLayout[j] = 0;
             if (availableExit != -1)
             {
                 currentPosition += Directions[availableExit];
@@ -201,6 +201,8 @@ public class RoomsGeneration : MonoBehaviour
                 {
                     GameObject currentDoor = Instantiate(doors[j], currentRoom.transform);
                     currentDoor.transform.position = currentRoom.transform.position + (Vector3)doorsOffset[j];
+                    if (walls[j] == 3)
+                        currentDoor.GetComponent<SpriteRenderer>().color = Color.red;
                 }
             }
         }
