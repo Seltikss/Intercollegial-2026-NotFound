@@ -1,3 +1,16 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: c44c3cc7aab3464990848592991223b9
-timeCreated: 1768482103
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - moveInput: {instanceID: 0}
+  - dashInput: {instanceID: 0}
+  - shootInput: {instanceID: 0}
+  - reloadInput: {instanceID: 0}
+  - interactInput: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
