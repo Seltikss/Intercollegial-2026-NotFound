@@ -21,6 +21,7 @@ namespace Player
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private TimerManager timerManager;
+    [SerializeField] private Door doorManager;
     
     [Header("Variable")]
     [SerializeField] private int c_maxSpeed = 20;
@@ -143,6 +144,10 @@ namespace Player
                 if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
                 {
                     playerData.PickUpObjectiveItem(item);
+                }
+                else if (result[i].transform.CompareTag("Door"))
+                {
+                    doorManager.OpenDoor();
                 }
             }
         }

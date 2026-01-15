@@ -27,23 +27,6 @@ public class BulletController : MonoBehaviour
     }
 
 
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     Debug.Log(other.gameObject.name);
-    //     
-    //     switch (other.gameObject.tag)
-    //     {
-    //         case "Ground":
-    //             Destroy(other.gameObject);
-    //             break;
-    //         case "Enemy":
-    //             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
-    //             Destroy(other.gameObject);
-    //             break;
-    //     }
-    // }
-
-
     private void FixedUpdate()
     {
         if (!isEnabled)
