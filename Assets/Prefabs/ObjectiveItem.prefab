@@ -150,5 +150,13 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2712243284454980936}
   itemType: 0
   typesSprites:
-  - {fileID: -3128400943633037191, guid: 6eb932b03a82e8d47a4acb0a8829bc23, type: 3}
-  - {fileID: -2776686786088596489, guid: 3d36b5078789d274397ab1a1ae4c577b, type: 3}
+  - {fileID: -8643226308865726112, guid: 7e8190d2ddfa3bc45b674ad2dea9329d, type: 3}
+  - {fileID: -1700550758128297806, guid: aae6812f108b4a0469f962fbe9fc3732, type: 3}
+  - {fileID: 4909279527673693733, guid: 7372e599becdd43459bbeb3e170ab651, type: 3}
+  - {fileID: 5307724339882267920, guid: 2b88ea9930ca47145a6790c74f4ce246, type: 3}
+  - {fileID: 1524910088472380802, guid: 52c7b1b21086a5d4db05f5d217cb6947, type: 3}
+  - {fileID: -589321560370367981, guid: bd5af8c76c91d4b46ae2aa3551769ded, type: 3}
+  - {fileID: 7536739973907198749, guid: c62452fc61a409e41a0d91390f57d39a, type: 3}
+  - {fileID: 6439117139618453166, guid: 6989346119c48234381f3e9e0e9d66fa, type: 3}
+  - {fileID: -8842850647473629419, guid: faeeaef32a955b44988b5a7299238b01, type: 3}
+  - {fileID: -911637640315772620, guid: e4cabd030eeeecb49a25a2e94f081c04, type: 3}

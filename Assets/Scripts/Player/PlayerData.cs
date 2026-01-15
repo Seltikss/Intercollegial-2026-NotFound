@@ -27,7 +27,7 @@ namespace Player
         [HideInInspector] public int bullet = MAX_BULLET;
         [HideInInspector] public int poison = 0;
     
-        private bool[] hasObjectiveItems = new bool[2]; //Mettre cela de la mème size de ObjectiveItem.Type
+        private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
         private bool isInPoison = false;
         
 

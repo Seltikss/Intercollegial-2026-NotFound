@@ -6,15 +6,24 @@ public class ObjectiveItem : MonoBehaviour
 {
     public enum Types
     {
-        MOTOR,
-        OXYGEN_TANK,
-        //Other thing
+        ANTIDOTE,
+        GAZ_CANISTER,
+        CASSETTE,
+        EASTER_EGG,
+        ESSENCE,
+        WIRE,
+        GOURVENAIL,
+        MARTEAU,
+        TV,
+        VIS
     }
+
+    public const int TYPE_NUM = 10; 
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     public Types itemType = 0;
-    public Sprite[] typesSprites = new Sprite[2];
+    public Sprite[] typesSprites = new Sprite[TYPE_NUM];
 
 
     private void Start()

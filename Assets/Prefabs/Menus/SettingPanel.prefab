@@ -347,3 +347,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe38ed39a9de49b4b8fe731e93f6c502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 03e21295-d6db-4625-b450-50a17493070c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  actionRef: {fileID: 0}
+  actionMap:
+    m_Name: Action Map
+    m_Id: 9947653c-bbc0-4beb-b99d-453a77f6ad74
+    m_Asset: {fileID: 0}
+    m_Actions: []
+    m_Bindings: []

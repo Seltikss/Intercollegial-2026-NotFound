@@ -159,7 +159,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4321745921901958220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +222,9 @@ MonoBehaviour:
       m_Calls: []
   timerManager: {fileID: 7816727951780689516}
   c_immunityTime: 0.5
+  c_poisonTime: 0.5
   bullet: 10
+  poison: 0
 --- !u!114 &7737942587585537436
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -704,11 +704,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2598190621117789853, guid: 077475aac7285094392229e7a4f74750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.24
+      value: 1.025
       objectReference: {fileID: 0}
     - target: {fileID: 2598190621117789853, guid: 077475aac7285094392229e7a4f74750, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.072
+      value: 0.402
       objectReference: {fileID: 0}
     - target: {fileID: 2598190621117789853, guid: 077475aac7285094392229e7a4f74750, type: 3}
       propertyPath: m_LocalPosition.z
@@ -815,3 +815,4 @@ SceneRoots:
   - {fileID: 851393461}
   - {fileID: 717890972}
   - {fileID: 1835099920509789298}
+  - {fileID: 467525913}
