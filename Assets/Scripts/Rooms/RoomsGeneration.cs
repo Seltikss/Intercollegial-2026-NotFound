@@ -28,8 +28,18 @@ public class RoomsGeneration : MonoBehaviour
     public GameObject DOT;
     public GameObject Room;
 
+    public GameObject Door_Up;
+    public GameObject Door_Right;
+    public GameObject Door_Down;
+    public GameObject Door_Left;
+
+    public List<GameObject> doors = new List<GameObject>();
+    public List<Vector2> doorsOffset = new List<Vector2>() { new Vector2(0f, 4f), new Vector2(8f, 0f), new Vector2(0f, -4f), new Vector2(-8f, 0f) };
+
     void Start()
     {
+        doors = new List<GameObject>() { Door_Up, Door_Right, Door_Down, Door_Left };
+
         availableNodes = new bool[MAP_HEIGHT * MAP_WIDTH];
         Vector2 lastRoom = Vector2.zero;
         Vector2 currentPosition = START_POINT;
@@ -61,7 +71,10 @@ public class RoomsGeneration : MonoBehaviour
             if (RNGwallSplit == 0 && i > 1)
                 availableExit = -1;
             else
+            {
+                Debug.Log(i);
                 availableExit = AddExitToRoom(currentRoom);
+            }
             if (availableExit == -1)
             {
                 allAvailableRooms.Add(currentRoom);
@@ -87,19 +100,25 @@ public class RoomsGeneration : MonoBehaviour
                     continue;
                 }
                 break;
-            } 
-            currentPosition += Directions[availableExit];
-            allAvailableRooms.Add(currentRoom);
-            unblockedRooms.Add(allAvailableRooms.IndexOf(currentRoom));
-            jumpedOnRoom = false;
+            }
+            //if (i == MAX_ROOMS - 1)
+            //    for (int j = 0; j < 4; j++)
+            //        if (currentRoom.roomLayout[j] == 2)
+            //            currentRoom.roomLayout[j] = 0;
+            if (availableExit != -1)
+            {
+                currentPosition += Directions[availableExit];
+                allAvailableRooms.Add(currentRoom);
+                unblockedRooms.Add(allAvailableRooms.IndexOf(currentRoom));
+                jumpedOnRoom = false;
+            }
         }
         AddBossRoom(allAvailableRooms);
-        DrawDots();
+        DrawRooms();
     }
 
     public void CheckNode(Vector2 pos)
     {
-        //Debug.Log(pos);
         int index = (int)pos.y * MAP_HEIGHT + (int)pos.x;
         availableNodes[index] = true;
     }
@@ -140,7 +159,7 @@ public class RoomsGeneration : MonoBehaviour
 
     private bool CheckExit(Vector2 roomPos, int exit, bool[] availableNodes)
     {
-        Vector2 newPos = roomPos + Directions[exit]; 
+        Vector2 newPos = roomPos + Directions[exit];
         if (newPos.x < 0 || newPos.y < 0 || newPos.y >= MAP_HEIGHT || newPos.x >= MAP_WIDTH)
             return false;
 
@@ -157,7 +176,7 @@ public class RoomsGeneration : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                if (rooms[i].roomLayout[j] == 0)
+                if (rooms[i].roomLayout[j] == 0 || CheckExit(rooms[i].GridPos, j, availableNodes))
                 {
                     rooms[i].roomLayout[j] = 3;
                     hasSetBoosDoor = true;
@@ -167,14 +186,23 @@ public class RoomsGeneration : MonoBehaviour
             if (hasSetBoosDoor)
                 break;
         }
-    }  
+    }
 
-    private void DrawDots()
+    private void DrawRooms()
     {
         for (int i = 0; i < allAvailableRooms.Count; i++)
         {
-            GameObject dot = Instantiate(DOT, this.transform);
-            dot.transform.position = allAvailableRooms[i].GridPos;
+            GameObject currentRoom = Instantiate(Room, this.transform);
+            currentRoom.transform.position = new Vector3(allAvailableRooms[i].GridPos.x * 17, allAvailableRooms[i].GridPos.y * 9, 0f);
+            for (int j = 0; j < 4; j++)
+            {
+                int[] walls = allAvailableRooms[i].roomLayout;
+                if (walls[j] == 1 || walls[j] == 2 || walls[j] == 3)
+                {
+                    GameObject currentDoor = Instantiate(doors[j], currentRoom.transform);
+                    currentDoor.transform.position = currentRoom.transform.position + (Vector3)doorsOffset[j];
+                }
+            }
         }
     }
 }
