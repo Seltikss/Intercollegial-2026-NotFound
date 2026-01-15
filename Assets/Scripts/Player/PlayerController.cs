@@ -89,7 +89,7 @@ namespace Player
         {
             if (CanDash())
             {
-                velocity = playerInput.facingVector * c_dashForce;
+                velocity = playerInput.nonZeroMoveVector * c_dashForce;
                 // nextDashTime = Time.time + c_dashTime;
                 timerManager.StartTimer(DASH_DURATION_TIMER_ID);
                 isDashing = true;

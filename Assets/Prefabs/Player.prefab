@@ -177,6 +177,10 @@ MonoBehaviour:
   shootInput: {fileID: 0}
   reloadInput: {fileID: 0}
   interactInput: {fileID: 0}
+  timerManager: {fileID: 7816727951780689516}
+  c_dashBufferTime: 0.5
+  c_reloadBufferTime: 0.5
+  c_interactBufferTime: 0.5
   nonZeroMoveVector: {x: 1, y: 0}
   facingVector: {x: 1, y: 0}
 --- !u!114 &1317599628443707605
@@ -197,7 +201,6 @@ MonoBehaviour:
   playerInput: {fileID: 4321745921901958220}
   playerData: {fileID: 6902486081644814887}
   timerManager: {fileID: 7816727951780689516}
-  doorManager: {fileID: 0}
   c_maxSpeed: 2
   c_dashForce: 30
   c_dashTime: 0.1
@@ -207,6 +210,7 @@ MonoBehaviour:
   c_interactRadius: 0.5
   c_interactDist: 0.5
   isLocked: 0
+  isDashing: 0
 --- !u!114 &6902486081644814887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +229,6 @@ MonoBehaviour:
   timerManager: {fileID: 7816727951780689516}
   c_immunityTime: 0.5
   c_poisonTime: 0.5
-  bullet: 10
   poison: 0
 --- !u!114 &7737942587585537436
 MonoBehaviour:
