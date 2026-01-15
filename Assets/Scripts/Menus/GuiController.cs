@@ -10,6 +10,7 @@ public class GuiController : MonoBehaviour
     
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Slider poisonSlider;
+    [SerializeField] private Image[] bulletImages = new Image[PlayerData.MAX_BULLET];
     
     [SerializeField] private float c_healthBarLimit = 0.5f;
     [SerializeField] private float c_poisonBarLimit = 0.5f;
@@ -32,5 +33,14 @@ public class GuiController : MonoBehaviour
     {
         poison = poison <= 0 ? 0 : poison;
         poisonSlider.value = ((float) poison) / ((float)PlayerData.MAX_POISON);
+    }
+
+
+    public void SetBulletLeft(int left)
+    {
+        for (int i = 0; i < bulletImages.Length; i++)
+        {
+            bulletImages[i].enabled = i < left;
+        }
     }
 }
