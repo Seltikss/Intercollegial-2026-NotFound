@@ -16,7 +16,6 @@ namespace Player
     [SerializeField] private GameObject bulletInstance;
     
     [Header("Components")]
-    [SerializeField] private Transform transform;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerData playerData;
@@ -37,7 +36,7 @@ namespace Player
     
     private Vector2 velocity = Vector2.zero;
     public bool isLocked = false;
-    private bool isDashing = false;
+    [HideInInspector] public bool isDashing { get; private set; } = false;
 
 
     private void Start()
@@ -63,6 +62,24 @@ namespace Player
     {
         if (timerManager.IsStopped(RELOAD_DURATION_TIMER_ID))
             timerManager.StartTimer(RELOAD_DURATION_TIMER_ID);
+    }
+
+
+    private void Interact()
+    {
+        Vector2 pos = transform.position.ConvertTo<Vector2>() + playerInput.GetMouseDirection() * c_interactDist;
+        var result = Physics2D.OverlapCircleAll(pos, c_interactRadius);
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
+            {
+                playerData.PickUpObjectiveItem(item);
+            }
+            else if (result[i].transform.CompareTag("Door"))
+            {
+                doorManager.OpenDoor();
+            }
+        }
     }
 
 
@@ -137,19 +154,7 @@ namespace Player
         }
         else if (playerInput.isInteractJustPressed)
         {
-            Vector2 pos = transform.position.ConvertTo<Vector2>() + playerInput.GetMouseDirection() * c_interactDist;
-            var result = Physics2D.OverlapCircleAll(pos, c_interactRadius);
-            for (int i = 0; i < result.Length; i++)
-            {
-                if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
-                {
-                    playerData.PickUpObjectiveItem(item);
-                }
-                else if (result[i].transform.CompareTag("Door"))
-                {
-                    doorManager.OpenDoor();
-                }
-            }
+            Interact();
         }
     }
 }
