@@ -35,7 +35,7 @@ namespace Player
     [SerializeField] private float c_interactDist = 0.5f;
     
     private Vector2 velocity = Vector2.zero;
-    
+    public bool isLocked = false;
     private bool isDashing = false;
 
 
@@ -76,9 +76,15 @@ namespace Player
         // isDashing
         return !isDashing && playerInput.isDashPressed && timerManager.IsStopped(DASH_COOLDOWN_TIMER_ID);
     }
-    
 
-    private void MovementProcess()
+
+    public void SetVelocity(Vector2 dir)
+    {
+        velocity = c_maxSpeed * Time.fixedDeltaTime * dir;
+    }
+
+
+    private void ApplyVelocity()
     {
         if (CanDash())
         {
@@ -101,6 +107,13 @@ namespace Player
         {
             velocity = playerInput.moveVector * c_maxSpeed;
         }
+    }
+    
+    
+    private void MovementProcess()
+    {
+        if (!isLocked)
+            ApplyVelocity();
         
         rigidBody.MovePosition(rigidBody.position + (velocity * Time.fixedDeltaTime));
     }
