@@ -7,8 +7,12 @@ using Vector2 = UnityEngine.Vector2;
 
 namespace Player
 {
-    public class PlayerInput : MonoBehaviour 
+    public class PlayerInput : MonoBehaviour
     {
+        private const string DASH_BUFFER_TIMER_ID = "DASH_BUFFER";
+        private const string RELOAD_BUFFER_TIMER_ID = "RELOAD_BUFFER";
+        private const string INTERACT_BUFFER_TIMER_ID = "INTERACT_BUFFER";
+        
         [Header("Input Action References")]
         [SerializeField] private InputActionReference moveInput;
         [SerializeField] private InputActionReference dashInput;
@@ -16,19 +20,32 @@ namespace Player
         [SerializeField] private InputActionReference reloadInput;
         [SerializeField] private InputActionReference interactInput;
 
+        [SerializeField] private TimerManager timerManager;
+        [SerializeField] private float c_dashBufferTime = 0.5f;
+        [SerializeField] private float c_reloadBufferTime = 0.5f;
+        [SerializeField] private float c_interactBufferTime = 0.5f;
+        
         public Vector2 moveVector => moveInput.action.ReadValue<Vector2>();
         public Vector2 nonZeroMoveVector = Vector2.right;
         public Vector2 facingVector = Vector2.right;
-        public bool isDashPressed { get; private set; } = false;
-        public bool isShootPressed { get; private set; } = false;
-        public bool isReloadPressed { get; private set; } = false;
-        public bool isInteractPressed { get; private set; } = false;
+        [HideInInspector] public bool isDashPressed { get; private set; } = false;
+        [HideInInspector] public bool isShootPressed { get; private set; } = false;
+        [HideInInspector] public bool isReloadPressed { get; private set; } = false;
+        [HideInInspector] public bool isInteractPressed { get; private set; } = false;
         
-        public bool isDashJustPressed { get; private set; } = false;
-        public bool isReloadJustPressed { get; private set; } = false;
-        public bool isInteractJustPressed { get; private set; } = false;
-        
-        
+        [HideInInspector] public bool isDashJustPressed => !timerManager.IsStopped(DASH_BUFFER_TIMER_ID);
+        [HideInInspector] public bool isReloadJustPressed => !timerManager.IsStopped(RELOAD_BUFFER_TIMER_ID);
+        [HideInInspector] public bool isInteractJustPressed  => !timerManager.IsStopped(INTERACT_BUFFER_TIMER_ID);
+
+
+        private void Start()
+        {
+            timerManager.AddTimer(DASH_BUFFER_TIMER_ID, c_dashBufferTime);
+            timerManager.AddTimer(RELOAD_BUFFER_TIMER_ID, c_reloadBufferTime);
+            timerManager.AddTimer(INTERACT_BUFFER_TIMER_ID, c_interactBufferTime);
+        }
+
+
         public Vector2 GetMouseDirection()
         {
             Vector2 mouseDir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
@@ -43,10 +60,13 @@ namespace Player
                 nonZeroMoveVector = moveVector;
 
             facingVector = GetMouseDirection();
-            
-            isDashJustPressed = !isDashPressed && dashInput.action.IsPressed();
-            isReloadJustPressed = !isReloadPressed && reloadInput.action.IsPressed();
-            isInteractJustPressed = !isInteractPressed && interactInput.action.IsPressed();
+
+            if (!isDashPressed && dashInput.action.IsPressed())
+                timerManager.StartTimer(DASH_BUFFER_TIMER_ID);
+            if (!isReloadPressed && reloadInput.action.IsPressed())
+                timerManager.StartTimer(RELOAD_BUFFER_TIMER_ID);
+            if (!isInteractPressed && interactInput.action.IsPressed())
+                timerManager.StartTimer(INTERACT_BUFFER_TIMER_ID);
             
             isDashPressed = dashInput.action.IsPressed();
             isShootPressed = shootInput.action.IsPressed();
