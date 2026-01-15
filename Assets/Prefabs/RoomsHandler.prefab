@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &861486000237098002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388536098773645461}
+  - component: {fileID: 6516059778772182179}
+  m_Layer: 0
+  m_Name: RoomsHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388536098773645461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861486000237098002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6516059778772182179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861486000237098002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24a0a822a15bb140b734c8383cb12fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableNodes: 
+  allAvailableRooms: []
+  unblockedRooms: 
+  START_POINT: {x: 10, y: 0}
+  MAX_ROOMS: 15
+  WALL_SPLIT_RNG: 3
+  DOT: {fileID: 0}
+  Room: {fileID: 8202537514520845839, guid: 0ae9fece81e12f845ada4c608fdfc4aa, type: 3}
+  Door_Up: {fileID: 5410214795501315813, guid: a146aadbdd9d2de439854cc2deab6b19, type: 3}
+  Door_Right: {fileID: 7041702533991898666, guid: 2f0a5bd56f7e3ca45872e82844fd20c0, type: 3}
+  Door_Down: {fileID: 1825128158952280974, guid: f439b674d9a17d8458011399dfa648c2, type: 3}
+  Door_Left: {fileID: 7283965867028946263, guid: 24f1a524ee2388a4ebd7ef57bc8aa135, type: 3}
+  doors: []
+  doorsOffset:
+  - {x: 0, y: 0.64}
+  - {x: 1.28, y: 0}
+  - {x: 0, y: -0.64}
+  - {x: -1.28, y: 0}
