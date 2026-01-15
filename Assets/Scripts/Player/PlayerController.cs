@@ -49,20 +49,12 @@ namespace Player
     }
 
 
-    private Vector2 GetMouseDirection()
-    {
-        Vector2 mouseDir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-        mouseDir.Normalize();
-        return mouseDir;
-    }
-
-
     private void ShootBullet()
     {
         timerManager.StartTimer(GUN_COOLDOWN_TIMER_ID);
         playerData.bullet -= 1;
         GameObject bullet = Instantiate(bulletInstance, transform.position, new Quaternion());
-        bullet.GetComponent<BulletController>().InitializeBullet(GetMouseDirection());
+        bullet.GetComponent<BulletController>().InitializeBullet(playerInput.GetMouseDirection());
     }
 
 
@@ -90,7 +82,7 @@ namespace Player
     {
         if (CanDash())
         {
-            velocity = playerInput.moveVector * c_dashForce;
+            velocity = playerInput.facingVector * c_dashForce;
             // nextDashTime = Time.time + c_dashTime;
             timerManager.StartTimer(DASH_DURATION_TIMER_ID);
             isDashing = true;
@@ -131,7 +123,7 @@ namespace Player
         }
         else if (playerInput.isInteractJustPressed)
         {
-            Vector2 pos = transform.position.ConvertTo<Vector2>() + GetMouseDirection() * c_interactDist;
+            Vector2 pos = transform.position.ConvertTo<Vector2>() + playerInput.GetMouseDirection() * c_interactDist;
             var result = Physics2D.OverlapCircleAll(pos, c_interactRadius);
             for (int i = 0; i < result.Length; i++)
             {
