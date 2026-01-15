@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0151fa02b72476842a885834c624ab54
+guid: 1f010621dda1c164b96ea81b89b3165f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5601119969533167050
-    second: Easter Egg_0
+      213: -5348440269328107679
+    second: up_wall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Easter Egg_0
+      name: up_wall_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac50f50bfec2bbd40800000000000000
-      internalID: 5601119969533167050
+      spriteID: 167bd4c89e586c5b0800000000000000
+      internalID: -5348440269328107679
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Easter Egg_0: 5601119969533167050
+      up_wall_0: -5348440269328107679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
