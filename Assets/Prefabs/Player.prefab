@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8492537913659578605}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   playerInput: {fileID: 4321745921901958220}
   playerData: {fileID: 6902486081644814887}
   timerManager: {fileID: 7816727951780689516}
+  doorManager: {fileID: 0}
   c_maxSpeed: 2
   c_dashForce: 30
   c_dashTime: 0.1
@@ -205,6 +206,7 @@ MonoBehaviour:
   c_reloadDuration: 1
   c_interactRadius: 0.5
   c_interactDist: 0.5
+  isLocked: 0
 --- !u!114 &6902486081644814887
 MonoBehaviour:
   m_ObjectHideFlags: 0
