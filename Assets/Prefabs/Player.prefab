@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6641aafe3b810cd45b0463566bde2f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerManager: {fileID: 7816727951780689516}
+  c_immunityTime: 0.5
   bullet: 10
 --- !u!114 &7816727951780689516
 MonoBehaviour:
