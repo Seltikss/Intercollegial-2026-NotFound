@@ -83,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1783172713
-  m_SortingLayer: 1
+  m_SortingLayerID: 215889209
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6454490000420998888, guid: 0c8491fdd68e18c42a8eafbdf796f3fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,7 +132,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.1
 --- !u!50 &4328536494837252280
 Rigidbody2D:
   serializedVersion: 5
@@ -239,7 +239,8 @@ MonoBehaviour:
   animator: {fileID: 8492537913659578605}
   playerInput: {fileID: 4321745921901958220}
   gunObject: {fileID: 5110314891471016180}
-  c_gunOffset: {x: 0.1, y: 0.1}
+  gunSpriteRenderer: {fileID: 3269093855308239269}
+  c_gunOffset: {x: 0.2, y: 0.1}
   c_rotCutoff: 0.5
 --- !u!114 &7816727951780689516
 MonoBehaviour:

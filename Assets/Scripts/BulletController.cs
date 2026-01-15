@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private const int SPEED = 10;
+    private const int SPEED = 1;
     
     [SerializeField] private Transform transform;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -13,9 +13,6 @@ public class BulletController : MonoBehaviour
 
     public void InitializeBullet(Vector2 dir)
     {
-        
-        
-        
         direction = dir;
         float rotation = Mathf.Rad2Deg * (float) Math.Atan2(dir.y, dir.x);
         transform.eulerAngles = new Vector3(0, 0, rotation);
@@ -23,17 +20,22 @@ public class BulletController : MonoBehaviour
         spriteRenderer.enabled = true;
         enabled = true;
     }
-    
 
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log(other.gameObject.name);
+        }
+        
         switch (other.gameObject.tag)
         {
             case "Ground":
                 Destroy(other.gameObject);
                 break;
             case "Enemy":
-                //Damage enemy
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
                 Destroy(other.gameObject);
                 break;
         }

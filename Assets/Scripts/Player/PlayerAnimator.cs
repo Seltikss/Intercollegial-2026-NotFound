@@ -11,6 +11,7 @@ namespace Player
         [SerializeField] private PlayerInput playerInput;
 
         [SerializeField] private GameObject gunObject;
+        [SerializeField] private SpriteRenderer gunSpriteRenderer;
 
         [SerializeField] private Vector2 c_gunOffset = new Vector2(.1f, .1f);
         [SerializeField] private float c_rotCutoff = 0.2f;
@@ -27,12 +28,14 @@ namespace Player
                 animator.SetInteger("dir", 2);
             
             spriteRenderer.flipX = playerInput.facingVector.x < 0;
+            gunSpriteRenderer.flipY = playerInput.facingVector.x < 0;
 
-            gunObject.GetComponent<SpriteRenderer>().sortingLayerName =
-                playerInput.facingVector.y > 0 ? "Layer1" : "Layer2";
+            gunSpriteRenderer.sortingLayerName = playerInput.facingVector.y > c_rotCutoff ? "Layer1" : "Layer3";
 
             Vector2 offset = c_gunOffset * playerInput.facingVector;
             gunObject.transform.position = transform.position + new Vector3(offset.x, offset.y, 0);
+            gunObject.transform.eulerAngles =
+                new Vector3(0, 0, Mathf.Rad2Deg * (float) Math.Atan2(playerInput.facingVector.y, playerInput.facingVector.x));
         }
     }
 }
