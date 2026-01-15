@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4328536494837252280}
   - component: {fileID: 1317599628443707605}
   - component: {fileID: 6902486081644814887}
+  - component: {fileID: 7816727951780689516}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -167,14 +168,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8000d95eaeb064dae46c6cc882ce97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletInstance: {fileID: 7796700023579545104}
   moveInput: {fileID: 0}
+  dashInput: {fileID: 0}
   shootInput: {fileID: 0}
   reloadInput: {fileID: 0}
   transform: {fileID: 5338391838428599819}
   rigidBody: {fileID: 4328536494837252280}
   playerData: {fileID: 6902486081644814887}
-  bulletInstance: {fileID: 7796700023579545104}
+  timerManager: {fileID: 7816727951780689516}
   c_maxSpeed: 10
+  c_dashForce: 30
+  c_dashTime: 0.1
+  c_dashCooldown: 0.5
+  c_gunCooldown: 0.2
+  c_reloadDuration: 1
 --- !u!114 &6902486081644814887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,8 +195,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6641aafe3b810cd45b0463566bde2f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   bullet: 10
+--- !u!114 &7816727951780689516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865518499621113132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b924695c4183c97408dfbb602a384d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timersArray:
+  - time: 0.1
+    onFinished:
+      m_PersistentCalls:
+        m_Calls: []
+  - time: 0.1
+    onFinished:
+      m_PersistentCalls:
+        m_Calls: []
+  - time: 0.1
+    onFinished:
+      m_PersistentCalls:
+        m_Calls: []
+  - time: 0.1
+    onFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6902486081644814887}
+          m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
+          m_MethodName: ResetBullet
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1261799171025681350
 PrefabInstance:
   m_ObjectHideFlags: 0
