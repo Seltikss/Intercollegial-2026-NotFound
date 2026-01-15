@@ -9,12 +9,6 @@ public class EnemyBehaviour : MonoBehaviour
     public float enemySpeed = 1.0f;
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.tag);
-    }
-
-
     void FixedUpdate()
     {
         RaycastHit2D[] hits = new RaycastHit2D[10];

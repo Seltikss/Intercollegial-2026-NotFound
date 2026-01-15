@@ -40,12 +40,6 @@ public class BulletController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Debug.Log(other.gameObject.name + " Collision");
-    }
-
-
     private void FixedUpdate()
     {
         Vector2 velocity = direction * SPEED * Time.fixedDeltaTime;
