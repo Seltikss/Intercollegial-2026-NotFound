@@ -109,8 +109,6 @@ namespace Player
                 }
             }
             
-            Debug.Log(poison);
-            
             if (poison == MAX_POISON)
                 TakeDamage(1);
         }
