@@ -7,7 +7,9 @@ public class RoomsGeneration : MonoBehaviour
 {
     public const int MAP_HEIGHT = 20;
     public const int MAP_WIDTH = 20;
-    [SerializeField] public bool[] availableNodes;
+    public bool[] availableNodes;
+
+    //[SerializeField] private int mapHeight = MAP_HEIGHT;
 
     private List<Vector2> Directions = new List<Vector2> { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
@@ -18,7 +20,7 @@ public class RoomsGeneration : MonoBehaviour
         public int freeWalls = 3;
         public int[] roomLayout = new int[4]; // -1 is invalid, 0 is nothing, 1 is entry, 2 is exit // from up to left
     }
-    [SerializeField] public List<Rooms> allAvailableRooms = new List<Rooms>();
+    public List<Rooms> allAvailableRooms = new List<Rooms>();
     public List<int> unblockedRooms = new List<int>();
 
     public Vector2 START_POINT = Vector2.zero;
@@ -32,6 +34,8 @@ public class RoomsGeneration : MonoBehaviour
     public GameObject Door_Right;
     public GameObject Door_Down;
     public GameObject Door_Left;
+
+    [SerializeField] private List<GameObject> RNG_ROOMS = new List<GameObject>();
 
     public List<GameObject> doors = new List<GameObject>();
     public List<Vector2> doorsOffset = new List<Vector2>() { new Vector2(0f, 0.7f), new Vector2(1.6f, 0f), new Vector2(0f, -0.7f), new Vector2(-1.6f, 0f) };
@@ -202,7 +206,7 @@ public class RoomsGeneration : MonoBehaviour
     {
         for (int i = 0; i < allAvailableRooms.Count; i++)
         {
-            GameObject currentRoom = Instantiate(Room, this.transform);
+            GameObject currentRoom = Instantiate(RNG_ROOMS[Random.Range(0, RNG_ROOMS.Count)], this.transform);
             currentRoom.transform.position = new Vector3(allAvailableRooms[i].GridPos.x * 2.72f, allAvailableRooms[i].GridPos.y * 1.44f, 0f);
             for (int j = 0; j < 4; j++)
             {

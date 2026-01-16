@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public int DETECTION_RADIUS = 10;
+    //public int DETECTION_RADIUS = 10;
     public string playerTag = "Player";
     public float enemySpeed = 1.0f;
 
+    public EnemyDetectionZone zone;
 
     void FixedUpdate()
     {
-        RaycastHit2D[] hits = new RaycastHit2D[10];
-        hits = Physics2D.CircleCastAll(transform.position, DETECTION_RADIUS, Vector2.up);
-        for (int i = 0; i < hits.Length; i++)
-        {
-            if (hits[i].collider.CompareTag(playerTag))
-            {
-                Move(hits[i].transform.position);
-                break;
-            }
-        }
+        if (zone.isInRange)
+            Move(zone.playerPos);
+
+        //RaycastHit2D[] hits = new RaycastHit2D[10];
+        //hits = Physics2D.CircleCastAll(transform.position, DETECTION_RADIUS, Vector2.up);
+        //for (int i = 0; i < hits.Length; i++)
+        //{
+        //    if (hits[i].collider.CompareTag(playerTag))
+        //    {
+        //        Move(hits[i].transform.position);
+        //        break;
+        //    }
+        //}
     }
 
     private void Move(Vector3 playerPos)

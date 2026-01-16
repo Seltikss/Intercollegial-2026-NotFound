@@ -25,7 +25,7 @@ namespace Player
         [SerializeField] private float c_immunityTime = 0.5f;
         [SerializeField] private float c_poisonTime = 0.5f;
     
-        [HideInInspector] public int health { get; private set; } = MAX_HEALTH;
+        [HideInInspector] public int health = MAX_HEALTH;
         [HideInInspector] private int bullet  = MAX_BULLET;
         [HideInInspector] public int poison = 0;
     
@@ -66,8 +66,7 @@ namespace Player
         {
             if (!timerManager.IsStopped(IMMUNITY_TIMER_ID))
                 return;
-        
-            PlayHurt();
+
             health -= damage;
             GuiController.instance.SetHealth(health);
             if (health <= 0)
