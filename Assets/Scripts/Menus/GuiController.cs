@@ -47,13 +47,13 @@ public class GuiController : MonoBehaviour
     
     public void EnableWinScreen()
     {
-        
+        winScreen.SetActive(true);
     }
     
     
     public void EnableGameOverScreen()
     {
-        
+        gameOverScreen.SetActive(true);
     }
     
     

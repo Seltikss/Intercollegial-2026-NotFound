@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Utils;
 
 namespace Player
 {
@@ -21,6 +22,7 @@ namespace Player
         public UnityEvent onPlayerKilled = new UnityEvent();
     
         [SerializeField] private TimerManager timerManager;
+        [SerializeField] private AudioSource audioSource;
     
         [SerializeField] private float c_immunityTime = 0.5f;
         [SerializeField] private float c_poisonTime = 0.5f;
@@ -68,6 +70,7 @@ namespace Player
                 return;
 
             health -= damage;
+            AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
