@@ -8,6 +8,8 @@ namespace Utils
 {
     public class AudioManager : MonoBehaviour
     {
+        public static bool isFirstTime = true;
+        
         public enum Musics
         {
             NONE = -1,
