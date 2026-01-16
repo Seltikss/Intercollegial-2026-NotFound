@@ -29,6 +29,7 @@ namespace Utils
         public AudioClip dashPlayer;
         public AudioClip gunShot;
         public AudioClip itemFound;
+        public AudioClip darkButton;
 
 
         private void Start()

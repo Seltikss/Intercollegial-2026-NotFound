@@ -238,7 +238,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166002201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1942291073}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &166002201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +450,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1207624052}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1942291073}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: GoToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1207624052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Menu Principal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -561,7 +585,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.35
+  m_fontSize: 31.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -940,7 +964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Try Again
+  m_text: Rejouer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -967,7 +991,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.35
+  m_fontSize: 40.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1020,6 +1044,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780000209}
   m_CullTransparentMesh: 1
+--- !u!1001 &1927889887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3589137614775801234, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 920.7497
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1005.8016
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.918692
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747609647553557363, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56338f27d8b8ef846af42a1cd3db7250, type: 3}
 --- !u!1 &1942291071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,8 +1151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f301fa2147701b4cbc2593c0c544c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainSceneName: 
-  GameSceneName: 
+  soundEffect: {fileID: 0}
+  MainSceneName: MainMenu
+  GameSceneName: StartScene
+  audioSource: {fileID: 0}
   mainMenuButton: {fileID: 0}
   tryAgainButton: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
@@ -1081,3 +1164,4 @@ SceneRoots:
   - {fileID: 1409218214}
   - {fileID: 1340672753}
   - {fileID: 731256375}
+  - {fileID: 1927889887}
