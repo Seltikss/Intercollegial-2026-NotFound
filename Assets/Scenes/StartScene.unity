@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700264097529444694, guid: 3478cd17f84ebb34a8bb95ebb389fa3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8744593782998672597, guid: 3478cd17f84ebb34a8bb95ebb389fa3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -644,63 +644,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7089203570229952031, guid: a146aadbdd9d2de439854cc2deab6b19, type: 3}
   m_PrefabInstance: {fileID: 1037179678}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &895698440
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 27.19799
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.012139022
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1881891299630228100, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632003301620301393, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
-      propertyPath: m_Name
-      value: Salle (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1e5992103f214f445a4bee475e8bcc50, type: 3}
 --- !u!114 &910179874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_down
       objectReference: {fileID: 0}
+    - target: {fileID: 1825128158952280974, guid: f439b674d9a17d8458011399dfa648c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8011700422522467099, guid: f439b674d9a17d8458011399dfa648c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.196762
@@ -1176,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6516059778772182179, guid: fb4b0102d452ec340b285cf737bba30c, type: 3}
+      propertyPath: EndRoom
+      value: 
+      objectReference: {fileID: 7700264097529444694, guid: 3478cd17f84ebb34a8bb95ebb389fa3e, type: 3}
     - target: {fileID: 6516059778772182179, guid: fb4b0102d452ec340b285cf737bba30c, type: 3}
       propertyPath: RNG_ROOMS.Array.size
       value: 14
@@ -1477,4 +1428,3 @@ SceneRoots:
   - {fileID: 1824675832}
   - {fileID: 5347798}
   - {fileID: 1500635292}
-  - {fileID: 895698440}

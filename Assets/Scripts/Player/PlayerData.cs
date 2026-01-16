@@ -49,8 +49,11 @@ namespace Player
             GuiController.instance.SetPoison(poison);
 
             source = GetComponent<AudioSource>();
-            Debug.Log("Source Found");
-
+            
+            DontDestroyOnLoad(gameObject);
+            PlayerInput[] playerData = FindObjectsOfType<PlayerInput>();
+            if (playerData.Length > 1)
+                Destroy(gameObject);
         }
 
 
@@ -131,7 +134,10 @@ namespace Player
 
             totalScore += score;
             enteredLastRoom = false;
+
+
             // load new scene
+            SceneManager.LoadScene("StartScene");
         }
 
 

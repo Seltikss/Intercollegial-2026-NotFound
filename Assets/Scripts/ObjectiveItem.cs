@@ -45,7 +45,6 @@ public class ObjectiveItem : MonoBehaviour
     {
         if (itemType == Types.EASTER_EGG)
         {
-            Debug.Log("Picked UPP");
             nextTime = Time.time + c_time;
         }
         else

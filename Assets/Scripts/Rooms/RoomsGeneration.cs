@@ -5,11 +5,9 @@ using static UnityEditor.PlayerSettings;
 
 public class RoomsGeneration : MonoBehaviour
 {
-    public const int MAP_HEIGHT = 20;
-    public const int MAP_WIDTH = 20;
-    public bool[] availableNodes;
-
-    //[SerializeField] private int mapHeight = MAP_HEIGHT;
+    private const int MAP_HEIGHT = 20;
+    private const int MAP_WIDTH = 20;
+    private bool[] availableNodes;
 
     private List<Vector2> Directions = new List<Vector2> { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
@@ -18,7 +16,7 @@ public class RoomsGeneration : MonoBehaviour
     {
         public Vector2 GridPos;
         public int freeWalls = 3;
-        public int[] roomLayout = new int[4]; // -1 is invalid, 0 is nothing, 1 is entry, 2 is exit // from up to left
+        public int[] roomLayout = new int[4]; // -1 is invalid, 0 is nothing, 1 is entry, 2 is exit, 3 is final door // from up to left
     }
     public List<Rooms> allAvailableRooms = new List<Rooms>();
     public List<int> unblockedRooms = new List<int>();
@@ -27,13 +25,12 @@ public class RoomsGeneration : MonoBehaviour
     public int MAX_ROOMS = 15;
     public int WALL_SPLIT_RNG = 2;
 
-    public GameObject DOT;
-    public GameObject Room;
+    [SerializeField] private GameObject EndRoom;
 
-    public GameObject Door_Up;
-    public GameObject Door_Right;
-    public GameObject Door_Down;
-    public GameObject Door_Left;
+    [SerializeField] private GameObject Door_Up;
+    [SerializeField] private GameObject Door_Right;
+    [SerializeField] private GameObject Door_Down;
+    [SerializeField] private GameObject Door_Left;
 
     [SerializeField] private List<GameObject> RNG_ROOMS = new List<GameObject>();
 
@@ -185,6 +182,10 @@ public class RoomsGeneration : MonoBehaviour
                 if (rooms[i].roomLayout[j] == 0 || CheckExit(rooms[i].GridPos, j, availableNodes))
                 {
                     rooms[i].roomLayout[j] = 3;
+                    Rooms finalRoom = new Rooms();
+                    finalRoom.GridPos = rooms[i].GridPos + Directions[j];
+                    finalRoom.roomLayout[Directions.IndexOf((finalRoom.GridPos - rooms[i].GridPos) * -1)] = 3;
+                    allAvailableRooms.Add(finalRoom);
                     hasSetBoosDoor = true;
                     break;
                 }
@@ -206,7 +207,11 @@ public class RoomsGeneration : MonoBehaviour
     {
         for (int i = 0; i < allAvailableRooms.Count; i++)
         {
-            GameObject currentRoom = Instantiate(RNG_ROOMS[Random.Range(0, RNG_ROOMS.Count)], this.transform);
+            GameObject currentRoom = new GameObject();
+            if (i == allAvailableRooms.Count - 1)
+                currentRoom = Instantiate(EndRoom, this.transform);
+            else
+                currentRoom = Instantiate(RNG_ROOMS[Random.Range(0, RNG_ROOMS.Count)], this.transform);
             currentRoom.transform.position = new Vector3(allAvailableRooms[i].GridPos.x * 2.72f, allAvailableRooms[i].GridPos.y * 1.44f, 0f);
             for (int j = 0; j < 4; j++)
             {
