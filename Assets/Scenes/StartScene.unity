@@ -1468,35 +1468,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.9731365
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.6218762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.90900004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.02812383
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -5.9841003
+      value: 117.0159
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -29.664398
+      value: 612.3356
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553656935743721892, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8862769967545215546, guid: 96226f38703a48a4b85ef43699966128, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2001,10 +2001,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
