@@ -22,6 +22,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayMusic(AudioManager.Musics.MAIN_THEME, true, transform);
         source = GetComponent<AudioSource>();
     }
 

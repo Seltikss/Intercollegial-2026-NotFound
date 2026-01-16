@@ -17,8 +17,8 @@ namespace Utils
             ALUMINIUM, 
             BISMUTH, //Gameplay
             NEO, //Gameplay
-            STEEL,
-            TITAN
+            STEEL, //Credit
+            TITAN //GAmeplay
         }
         
         public static AudioManager instance;

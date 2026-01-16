@@ -42,7 +42,7 @@ namespace Player
 
         private void Start()
         {
-            AudioManager.instance.PlayMusic(AudioManager.Musics.MAIN_THEME, true, transform);
+            AudioManager.instance.PlayMusic(AudioManager.Musics.BISMUTH, true, transform);
             
             Debug.Log("starting");
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
