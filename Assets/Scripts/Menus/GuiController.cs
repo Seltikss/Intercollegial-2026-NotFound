@@ -47,6 +47,7 @@ public class GuiController : MonoBehaviour
         
         instance = this;
         pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
@@ -58,7 +59,8 @@ public class GuiController : MonoBehaviour
     
     public void OnGoBackButton()
     {
-        Debug.Log("Test");
+        PlayerData.health = PlayerData.MAX_HEALTH;
+        PlayerData.score = 0;
         SceneManager.LoadScene(0);
     }
     
