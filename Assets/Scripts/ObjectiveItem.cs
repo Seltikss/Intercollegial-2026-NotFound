@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Player;
+using Random = UnityEngine.Random;
 
 public class ObjectiveItem : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class ObjectiveItem : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(Random.Range(0, TYPE_NUM));
+        itemType = (Types) Random.Range(0, TYPE_NUM);
         spriteRenderer.sprite = typesSprites[(int) itemType];
     }
 
