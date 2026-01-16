@@ -53,6 +53,7 @@ namespace Player
 
     private void ShootBullet()
         {
+            AudioManager.instance.Play(AudioManager.instance.gunShot, transform);
             timerManager.StartTimer(GUN_COOLDOWN_TIMER_ID);
             playerData.RemoveBullet();
             GameObject bullet = Instantiate(bulletInstance, transform.position, new Quaternion());
