@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
+    public static bool isFirstTime = true;
+    
     [SerializeField] private string gameSceneName;
     public Button playButton;
     public Button SettingsButton;
@@ -27,7 +29,13 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene(gameSceneName);
+        if (isFirstTime)
+            SceneManager.LoadScene(3);
+        else
+        {
+            SceneManager.LoadScene(gameSceneName);
+            isFirstTime = false;
+        }
     }
 
 

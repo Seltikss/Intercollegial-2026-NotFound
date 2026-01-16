@@ -10,16 +10,20 @@ namespace Utils
     {
         public enum Musics
         {
-            A,
-            B,
-            C,
-            D,
+            NONE = -1,
+            MAIN_THEME,
+            ALUMINIUM, 
+            BISMUTH, //Gameplay
+            NEO, //Gameplay
+            STEEL,
+            TITAN
         }
         
         public static AudioManager instance;
 
         [SerializeField] private GameObject sourceInstance;
         [SerializeField] private AudioSource musicPlayer;
+        [SerializeField] private AudioClip[] musicClips = new AudioClip[6];
 
         private List<AudioSource> sources = new List<AudioSource>();
 
@@ -31,9 +35,14 @@ namespace Utils
         public AudioClip itemFound;
         public AudioClip darkButton;
 
+        public Musics musicPlaying = Musics.NONE;
+
 
         private void Start()
         {
+            if (instance != null)
+                return;
+            
             instance = this;
             DontDestroyOnLoad(this);
         }
@@ -42,16 +51,24 @@ namespace Utils
         public void Play(AudioClip clip, Transform t)
         {
             GameObject obj = Instantiate(sourceInstance, t);
-            AudioSource source = obj.GetComponent<AudioSource>(); 
+            AudioSource source = obj.GetComponent<AudioSource>();
             sources.Add(source);
             source.clip = clip;
             source.Play();
         }
 
 
-        public void PlayMusic(Musics index)
+        public void PlayMusic(Musics index, bool loop, Transform t)
         {
-            
+            if (index == Musics.NONE || index == musicPlaying)
+                return;
+
+            musicPlaying = index;
+            Debug.Log("Test");
+            musicPlayer.loop = loop;
+            musicPlayer.clip = musicClips[(int)index];
+            musicPlayer.transform.position = t.position;
+            musicPlayer.Play();
         }
 
 
@@ -59,6 +76,9 @@ namespace Utils
         {
             for (int i = 0; i < sources.Count; i++)
             {
+                if (sources[i] == null)
+                    continue;
+                
                 if (!sources[i].isPlaying)
                 {
                     Destroy(sources[i].gameObject);

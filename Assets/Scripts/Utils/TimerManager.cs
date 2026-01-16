@@ -65,6 +65,9 @@ public class TimerManager : MonoBehaviour
 
     public bool IsStopped(string id)
     {
+        if (!timersIds.Contains(id))
+            return true;
+        
         return !timersArray[timersIds.IndexOf(id)].enabled;
     }
     

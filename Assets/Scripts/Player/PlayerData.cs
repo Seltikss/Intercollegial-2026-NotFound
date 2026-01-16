@@ -27,26 +27,30 @@ namespace Player
     
         [SerializeField] private float c_immunityTime = 0.5f;
         [SerializeField] private float c_poisonTime = 0.5f;
+        [SerializeField] private int c_scoreToHave = 10;
     
         [HideInInspector] public int health = MAX_HEALTH;
         [HideInInspector] private int bullet  = MAX_BULLET;
         [HideInInspector] public int poison = 0;
+        public int score = 0;
     
         [SerializeField] private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
         private bool isInPoison = false;
 
         public bool enteredLastRoom = false;
         public int totalScore = 0;
-        
 
         private void Start()
-
         {
+            AudioManager.instance.PlayMusic(AudioManager.Musics.MAIN_THEME, true, transform);
+            
+            Debug.Log("starting");
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
             timerManager.AddTimer(POISON_TIMER_ID, c_poisonTime);
             
-            GuiController.instance.SetHealth(health);
-            GuiController.instance.SetPoison(poison);
+            GuiController.SetStaticHealth(health);
+            GuiController.SetStaticPoison(poison);
+            GuiController.SetStaticScore(totalScore);
 
             source = GetComponent<AudioSource>();
             
@@ -77,11 +81,16 @@ namespace Player
                 return;
 
             health -= damage;
-            //AudioManager.instance.Play(AudioManager.insatance.hurtPlayer, transform);
+            AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
+                transform.position = new Vector2(27.2f, -1.44f);
+                SceneManager.LoadScene(2);
+                ResetHealth();
+                ResetBullet();
+                score = 0;
+                totalScore = 0;
                 onPlayerKilled.Invoke();
             }
             else
@@ -120,24 +129,30 @@ namespace Player
         {
             hasObjectiveItems[(int) item.itemType] = true;
             item.PickUp();
+            score += 1;
+            GuiController.instance.SetScore(score);
         }
 
         public void CompletedRun()
         {
-            int score = 0;
-            for (int i = 0; i < hasObjectiveItems.Length; i++)
-                if (hasObjectiveItems[i] == true)
-                {
-                    hasObjectiveItems[i] = false;
-                    score++;    
-                }
+            // int score = 0;
+            // for (int i = 0; i < hasObjectiveItems.Length; i++)
+            // {
+            //     if (hasObjectiveItems[i] == true)
+            //     {
+            //         hasObjectiveItems[i] = false;
+            //         score++;
+            //     }
+            // }
 
             totalScore += score;
             enteredLastRoom = false;
 
-
             // load new scene
-            SceneManager.LoadScene("StartScene");
+            if (totalScore < c_scoreToHave)
+                SceneManager.LoadScene("StartScene");
+            else
+                SceneManager.LoadScene(4);
         }
 
 

@@ -179,7 +179,7 @@ public class RoomsGeneration : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                if (rooms[i].roomLayout[j] == 0 || CheckExit(rooms[i].GridPos, j, availableNodes))
+                if (rooms[i].roomLayout[j] == 0 && CheckExit(rooms[i].GridPos, j, availableNodes))
                 {
                     rooms[i].roomLayout[j] = 3;
                     Rooms finalRoom = new Rooms();

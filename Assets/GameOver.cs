@@ -20,7 +20,7 @@ public class GameOver : MonoBehaviour
     public void PlayAgain()
     {
         AudioManager.instance.Play(AudioManager.instance.darkButton, transform);
-        SceneManager.LoadScene(GameSceneName);
+        SceneManager.LoadScene(1);
     }
 
     public void GoToMenu()
