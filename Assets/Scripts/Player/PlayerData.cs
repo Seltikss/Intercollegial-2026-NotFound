@@ -15,6 +15,8 @@ namespace Player
         public const int MAX_HEALTH = 10;
         public const int MAX_BULLET = 5;
         public const int MAX_POISON = 50;
+        private AudioSource source;
+        public AudioClip soundEffect;
 
         public UnityEvent onPlayerKilled = new UnityEvent();
     
@@ -32,12 +34,17 @@ namespace Player
         
 
         private void Start()
+
         {
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
             timerManager.AddTimer(POISON_TIMER_ID, c_poisonTime);
             
             GuiController.instance.SetHealth(health);
             GuiController.instance.SetPoison(poison);
+
+            source = GetComponent<AudioSource>();
+            Debug.Log("Source Found");
+
         }
 
 
@@ -60,6 +67,7 @@ namespace Player
             if (!timerManager.IsStopped(IMMUNITY_TIMER_ID))
                 return;
         
+            PlayHurt();
             health -= damage;
             GuiController.instance.SetHealth(health);
             if (health <= 0)
@@ -125,6 +133,11 @@ namespace Player
             
             if (poison == MAX_POISON)
                 TakeDamage(1);
+        }
+
+        public void PlayHurt()
+        {
+            source.Play();
         }
     }
 }
