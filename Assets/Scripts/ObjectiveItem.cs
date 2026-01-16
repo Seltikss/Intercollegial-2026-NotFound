@@ -24,8 +24,8 @@ public class ObjectiveItem : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Vector2 c_scaleMod = new Vector2(0.5f, 0.5f);
     [SerializeField] private float c_time = 3f;
-    
-    
+
+    public bool isEnabled = true;
     public Types itemType = 0;
     public Sprite[] typesSprites = new Sprite[TYPE_NUM];
     public bool randomize = true;
@@ -43,6 +43,7 @@ public class ObjectiveItem : MonoBehaviour
 
     public void PickUp()
     {
+        isEnabled = false;
         if (itemType == Types.EASTER_EGG)
         {
             nextTime = Time.time + c_time;

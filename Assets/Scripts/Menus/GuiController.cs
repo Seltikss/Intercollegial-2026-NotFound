@@ -130,7 +130,7 @@ public class GuiController : MonoBehaviour
 
     public void SetScore(int score)
     {
-        scoreText.text = $"SCRAPS SCAVENGED : {score}";
+        scoreText.text = $"SCRAPS SCAVENGED : {score} / 10";
     }
 
 
