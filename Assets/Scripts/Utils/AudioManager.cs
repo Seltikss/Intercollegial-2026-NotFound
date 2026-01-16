@@ -36,6 +36,7 @@ namespace Utils
         public AudioClip itemFound;
         public AudioClip darkButton;
         public AudioClip doorOpen;
+        public AudioClip reload;
 
         public Musics musicPlaying = Musics.NONE;
 

@@ -118,6 +118,7 @@ namespace Player
 
         public void ResetBullet()
         {
+            AudioManager.instance.Play(AudioManager.instance.reload, transform);
             bullet = MAX_BULLET;
             GuiController.instance.SetBulletLeft(bullet);
         }

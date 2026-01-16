@@ -320,4 +320,5 @@ MonoBehaviour:
   itemFound: {fileID: 8300000, guid: e9ef238649b97464e9d4db48b4e0e2a0, type: 3}
   darkButton: {fileID: 8300000, guid: 53d9dec99bc47e94c9395c440d4ce2eb, type: 3}
   doorOpen: {fileID: 8300000, guid: 2a9bedbd1cc619e4d9ce64fcca145650, type: 3}
+  reload: {fileID: 8300000, guid: 6b7552b3cd0a8004c853a5d8a448edfd, type: 3}
   musicPlaying: -1
