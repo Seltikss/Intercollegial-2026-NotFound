@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
+
 public class MainMenu : MonoBehaviour
 {
     public static bool isFirstTime = true;
@@ -30,11 +32,13 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         if (isFirstTime)
+        {
+            isFirstTime = false;
             SceneManager.LoadScene(3);
+        }
         else
         {
             SceneManager.LoadScene(gameSceneName);
-            isFirstTime = false;
         }
     }
 
