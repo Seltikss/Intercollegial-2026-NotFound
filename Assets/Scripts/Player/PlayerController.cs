@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils;
 
 namespace Player
 {
@@ -93,6 +94,7 @@ namespace Player
                 // nextDashTime = Time.time + c_dashTime;
                 timerManager.StartTimer(DASH_DURATION_TIMER_ID);
                 isDashing = true;
+                AudioManager.instance.Play(AudioManager.instance.dashPlayer, transform);
             }
             else if (isDashing && timerManager.IsStopped(DASH_DURATION_TIMER_ID))
             {

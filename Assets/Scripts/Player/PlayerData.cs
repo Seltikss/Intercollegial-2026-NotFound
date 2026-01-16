@@ -71,15 +71,19 @@ namespace Player
         
             PlayHurt();
             health -= damage;
-            AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
+                AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
                 onPlayerKilled.Invoke();
             }
             else
+            {
+                AudioManager.instance.Play(AudioManager.instance.deathPlayer, transform);
                 timerManager.StartTimer(IMMUNITY_TIMER_ID);
+
+            }
         }
     
 
@@ -98,6 +102,7 @@ namespace Player
 
         public void RemoveBullet()
         {
+            AudioManager.instance.Play(AudioManager.instance.gunShot, transform);
             bullet -= 1;
             GuiController.instance.SetBulletLeft(bullet);
         }
