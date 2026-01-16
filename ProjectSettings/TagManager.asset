@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - Poison
   - Door
-  - Box
   layers:
   - Default
   - TransparentFX
