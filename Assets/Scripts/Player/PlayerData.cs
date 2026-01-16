@@ -85,6 +85,7 @@ namespace Player
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
+                transform.position = new Vector2(27.2f, -1.44f);
                 SceneManager.LoadScene(2);
                 ResetHealth();
                 ResetBullet();
