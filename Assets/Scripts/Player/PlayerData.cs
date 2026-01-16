@@ -10,6 +10,7 @@ namespace Player
 {
     public class PlayerData : MonoBehaviour
     {
+        
         const string IMMUNITY_TIMER_ID = "Immunity Timer";
         const string POISON_TIMER_ID = "Poison Timer";
         private const string POISON_TAG = "Poison";
@@ -28,17 +29,16 @@ namespace Player
         [SerializeField] private float c_immunityTime = 0.5f;
         [SerializeField] private float c_poisonTime = 0.5f;
         [SerializeField] private int c_scoreToHave = 10;
-    
-        [HideInInspector] public int health = MAX_HEALTH;
+        
+        [HideInInspector] public static int health = MAX_HEALTH;
         [HideInInspector] private int bullet  = MAX_BULLET;
         [HideInInspector] public int poison = 0;
-        public int score = 0;
+        public static int score = 0;
     
         [SerializeField] private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
         private bool isInPoison = false;
 
         public bool enteredLastRoom = false;
-        public int totalScore = 0;
 
         private void Start()
         {
@@ -54,7 +54,6 @@ namespace Player
 
             source = GetComponent<AudioSource>();
             
-            DontDestroyOnLoad(gameObject);
             PlayerInput[] playerData = FindObjectsOfType<PlayerInput>();
             if (playerData.Length > 1)
                 Destroy(gameObject);
@@ -90,7 +89,6 @@ namespace Player
                 ResetHealth();
                 ResetBullet();
                 score = 0;
-                totalScore = 0;
                 onPlayerKilled.Invoke();
             }
             else
@@ -147,8 +145,7 @@ namespace Player
             //         score++;
             //     }
             // }
-
-            totalScore += score;
+            
             enteredLastRoom = false;
 
             // load new scene
