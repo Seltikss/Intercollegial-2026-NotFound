@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using Player;
 using System.Collections.Generic;
-using Player;
 using UnityEngine;
+using Utils;
 
 public class Door : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
     {
         transform.GetComponent<SpriteRenderer>().sprite = openDoor;
         isOpen = true;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
