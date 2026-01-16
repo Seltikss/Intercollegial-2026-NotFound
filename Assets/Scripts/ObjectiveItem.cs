@@ -1,6 +1,7 @@
+using Player;
 using System;
 using UnityEngine;
-using Player;
+using Utils;
 using Random = UnityEngine.Random;
 
 public class ObjectiveItem : MonoBehaviour
@@ -51,6 +52,8 @@ public class ObjectiveItem : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            AudioManager.instance.Play(AudioManager.instance.itemFound, transform);
+
         }
     }
 

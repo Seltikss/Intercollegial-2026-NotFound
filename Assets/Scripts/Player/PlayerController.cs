@@ -146,14 +146,18 @@ namespace Player
                     if (result[i] && result[i].TryGetComponent(out ObjectiveItem item))
                     {
                         playerData.PickUpObjectiveItem(item);
+                        AudioManager.instance.Play(AudioManager.instance.itemFound, transform);
+
                     }
                     else if (result[i].transform.CompareTag("Door"))
                     {
                         result[i].GetComponent<Door>().OpenDoor();
+                        AudioManager.instance.Play(AudioManager.instance.doorOpen, transform);
                     }
                     else if (result[i].transform.CompareTag("Box") && playerData.enteredLastRoom == true)
                     {
                         playerData.CompletedRun();
+                        AudioManager.instance.Play(AudioManager.instance.itemFound, transform);
                     }
                 }
             }

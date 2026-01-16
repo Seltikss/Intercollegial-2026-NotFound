@@ -315,9 +315,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2566f9c11f575e24f9a46109bf8c2fb5, type: 3}
   hurtPlayer: {fileID: 8300000, guid: a864133ce040dd64590c582231b4c04a, type: 3}
   deathPlayer: {fileID: 8300000, guid: bf003a5b5c345034e8d37ff865468c91, type: 3}
-  doorOpen: {fileID: 8300000, guid: 2a9bedbd1cc619e4d9ce64fcca145650, type: 3}
   dashPlayer: {fileID: 8300000, guid: 3e5edde1ee9c9ff4bae2c838576471d5, type: 3}
   gunShot: {fileID: 8300000, guid: 72c97cc79c7d51b448d5fb72926f3efc, type: 3}
   itemFound: {fileID: 8300000, guid: e9ef238649b97464e9d4db48b4e0e2a0, type: 3}
   darkButton: {fileID: 8300000, guid: 53d9dec99bc47e94c9395c440d4ce2eb, type: 3}
+  doorOpen: {fileID: 8300000, guid: 2a9bedbd1cc619e4d9ce64fcca145650, type: 3}
   musicPlaying: -1
