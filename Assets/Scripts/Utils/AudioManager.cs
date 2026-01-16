@@ -25,7 +25,11 @@ namespace Utils
 
         public AudioClip hurtPlayer;
         public AudioClip deathPlayer;
-        
+        public AudioClip doorOpen;
+        public AudioClip dashPlayer;
+        public AudioClip gunShot;
+        public AudioClip itemFound;
+
 
         private void Start()
         {
