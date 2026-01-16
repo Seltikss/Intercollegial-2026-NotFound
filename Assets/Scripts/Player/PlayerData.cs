@@ -37,14 +37,14 @@ namespace Player
 
         public bool enteredLastRoom = false;
         public int totalScore = 0;
-        
 
         private void Start()
-
         {
+            Debug.Log("starting");
             timerManager.AddTimer(IMMUNITY_TIMER_ID, c_immunityTime);
             timerManager.AddTimer(POISON_TIMER_ID, c_poisonTime);
             
+            //GuiController.instance.SetScore(totalScore);
             GuiController.instance.SetHealth(health);
             GuiController.instance.SetPoison(poison);
 
@@ -134,7 +134,6 @@ namespace Player
 
             totalScore += score;
             enteredLastRoom = false;
-
 
             // load new scene
             SceneManager.LoadScene("StartScene");

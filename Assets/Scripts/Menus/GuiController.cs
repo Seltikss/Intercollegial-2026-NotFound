@@ -1,5 +1,6 @@
 using System;
 using Player;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,10 +10,11 @@ using UnityEngine.UI;
 public class GuiController : MonoBehaviour
 {
     public static GuiController instance;
-    
+
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Slider poisonSlider;
     [SerializeField] private Image[] bulletImages = new Image[PlayerData.MAX_BULLET];
+    [SerializeField] private TextMeshProUGUI scoreText;
     
     [SerializeField] private InputActionReference pauseMenuInput;
     
@@ -91,6 +93,11 @@ public class GuiController : MonoBehaviour
         {
             bulletImages[i].enabled = i < left;
         }
+    }
+
+    public void SetScore(int score)
+    {
+        scoreText.text = $"SCRAPS SCAVENGED : {0}";
     }
 
 
