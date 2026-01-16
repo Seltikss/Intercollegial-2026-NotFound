@@ -151,6 +151,10 @@ namespace Player
                     {
                         result[i].GetComponent<Door>().OpenDoor();
                     }
+                    else if (result[i].transform.CompareTag("Box") && playerData.enteredLastRoom == true)
+                    {
+                        playerData.CompletedRun();
+                    }
                 }
             }
         }

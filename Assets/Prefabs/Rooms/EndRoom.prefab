@@ -1252,7 +1252,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 140047437277256672}
   c_scaleMod: {x: 0.5, y: 0.5}
   c_time: 3
-  itemType: 3
+  itemType: 0
   typesSprites:
   - {fileID: -8643226308865726112, guid: 7e8190d2ddfa3bc45b674ad2dea9329d, type: 3}
   - {fileID: -1700550758128297806, guid: aae6812f108b4a0469f962fbe9fc3732, type: 3}
@@ -1264,4 +1264,4 @@ MonoBehaviour:
   - {fileID: 6439117139618453166, guid: 6989346119c48234381f3e9e0e9d66fa, type: 3}
   - {fileID: -8842850647473629419, guid: faeeaef32a955b44988b5a7299238b01, type: 3}
   - {fileID: -911637640315772620, guid: e4cabd030eeeecb49a25a2e94f081c04, type: 3}
-  randomize: 0
+  randomize: 1
