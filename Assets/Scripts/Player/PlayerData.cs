@@ -70,7 +70,7 @@ namespace Player
                 return;
 
             health -= damage;
-            AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
+            //AudioManager.instance.Play(AudioManager.insatance.hurtPlayer, transform);
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {

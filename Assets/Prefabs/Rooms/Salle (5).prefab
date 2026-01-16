@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 1629131165649729303}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 27.19097, y: 0.007440269, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -431,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 3588346177563615444}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02254685, y: -0.35037005, z: -1}
+  m_LocalPosition: {x: -0.02254685, y: -0.106, z: -1}
   m_LocalScale: {x: 1, y: 2.83, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -518,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 3696026777097544915}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022211373, y: -0.3053701, z: -1}
+  m_LocalPosition: {x: 0.06, y: -0.204, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,7 +692,7 @@ Transform:
   m_GameObject: {fileID: 5647735342919796369}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02254685, y: 0.31262994, z: -1}
+  m_LocalPosition: {x: 0.026, y: 0.014, z: -1}
   m_LocalScale: {x: 1, y: 2.83, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1776,7 +1776,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14989708, y: -0.02575332}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1786,7 +1786,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2248693, y: 0.5805892}
   m_EdgeRadius: 0
 --- !u!114 &8715807148031967260
 MonoBehaviour:
@@ -1800,8 +1800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7a3a9965fed0c4a80d4a980e1e28ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  dashInvulnerability: 0
+  damage: 1
+  dashInvulnerability: 1
 --- !u!1 &7692926094428893714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1828,7 @@ Transform:
   m_GameObject: {fileID: 7692926094428893714}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022211373, y: 0.33262992, z: -1}
+  m_LocalPosition: {x: 0.021, y: 0.108, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0458999127e1945a882cc5b9c5105c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chamberTr: {fileID: 0}
+  chamberTr: {fileID: 4696800903721700388}
 --- !u!1 &7920443865979817534
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,9 @@ public class DamageZone : MonoBehaviour
         if (other.gameObject.TryGetComponent(out PlayerData playerData))
         {
             if (dashInvulnerability && other.gameObject.GetComponent<PlayerController>().isDashing)
+            {
                 return;
+            }
             
             playerData.TakeDamage(damage);
         }

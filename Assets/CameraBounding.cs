@@ -13,6 +13,6 @@ public class CameraBounding : MonoBehaviour
     {
         Debug.Log("asdf");
         if (collision.CompareTag("Player"))
-            cam.transform.position = chamberTr.position + Vector3.back;
+            cam.transform.position = chamberTr.position + Vector3.back * 5;
     }
 }
