@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -31,8 +32,11 @@ namespace Player
         [HideInInspector] private int bullet  = MAX_BULLET;
         [HideInInspector] public int poison = 0;
     
-        private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
+        [SerializeField] private bool[] hasObjectiveItems = new bool[ObjectiveItem.TYPE_NUM]; //Mettre cela de la mème size de ObjectiveItem.Type
         private bool isInPoison = false;
+
+        public bool enteredLastRoom = false;
+        public int totalScore = 0;
         
 
         private void Start()
@@ -70,19 +74,15 @@ namespace Player
                 return;
 
             health -= damage;
+            //AudioManager.instance.Play(AudioManager.insatance.hurtPlayer, transform);
             GuiController.instance.SetHealth(health);
             if (health <= 0)
             {
-                AudioManager.instance.Play(AudioManager.instance.hurtPlayer, transform);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Remove this !!
                 onPlayerKilled.Invoke();
             }
             else
-            {
-                AudioManager.instance.Play(AudioManager.instance.deathPlayer, transform);
                 timerManager.StartTimer(IMMUNITY_TIMER_ID);
-
-            }
         }
     
 
@@ -101,7 +101,6 @@ namespace Player
 
         public void RemoveBullet()
         {
-            AudioManager.instance.Play(AudioManager.instance.gunShot, transform);
             bullet -= 1;
             GuiController.instance.SetBulletLeft(bullet);
         }
@@ -118,6 +117,21 @@ namespace Player
         {
             hasObjectiveItems[(int) item.itemType] = true;
             item.PickUp();
+        }
+
+        public void CompletedRun()
+        {
+            int score = 0;
+            for (int i = 0; i < hasObjectiveItems.Length; i++)
+                if (hasObjectiveItems[i] == true)
+                {
+                    hasObjectiveItems[i] = false;
+                    score++;    
+                }
+
+            totalScore += score;
+            enteredLastRoom = false;
+            // load new scene
         }
 
 

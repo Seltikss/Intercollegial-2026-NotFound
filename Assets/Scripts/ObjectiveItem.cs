@@ -35,7 +35,6 @@ public class ObjectiveItem : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Random.Range(0, TYPE_NUM));
         if (randomize)
             itemType = (Types) Random.Range(0, TYPE_NUM);
         spriteRenderer.sprite = typesSprites[(int) itemType];
@@ -46,6 +45,7 @@ public class ObjectiveItem : MonoBehaviour
     {
         if (itemType == Types.EASTER_EGG)
         {
+            Debug.Log("Picked UPP");
             nextTime = Time.time + c_time;
         }
         else
