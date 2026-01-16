@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class GuiController : MonoBehaviour
 {
+    private static int staticHealth = -1;
+    private static int staticPoison = -1;
+    private static int staticScore = -1;
+    
     public static GuiController instance;
 
     [SerializeField] private Slider healthSlider;
@@ -18,8 +22,6 @@ public class GuiController : MonoBehaviour
     
     [SerializeField] private InputActionReference pauseMenuInput;
     
-    [SerializeField] private GameObject gameOverScreen;
-    [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject pauseScreen;
 
     private bool pauseMenuInputPressed = false;
@@ -27,10 +29,24 @@ public class GuiController : MonoBehaviour
 
     private void Start()
     {
+        if (staticHealth != -1)
+        {
+            SetHealth(staticHealth);
+            staticHealth = -1;
+        }
+        if (staticPoison != -1)
+        {
+            SetPoison(staticPoison);
+            staticPoison = -1;
+        }
+        if (staticScore != -1)
+        {
+            SetScore(staticScore);
+            staticScore = -1;
+        }
+        
         instance = this;
         pauseScreen.SetActive(false);
-        winScreen.SetActive(false);
-        gameOverScreen.SetActive(false);
     }
 
 
@@ -45,18 +61,6 @@ public class GuiController : MonoBehaviour
         Debug.Log("Test");
         SceneManager.LoadScene(0);
     }
-
-    
-    public void EnableWinScreen()
-    {
-        winScreen.SetActive(true);
-    }
-    
-    
-    public void EnableGameOverScreen()
-    {
-        gameOverScreen.SetActive(true);
-    }
     
     
     public void EnablePauseScreen()
@@ -70,6 +74,35 @@ public class GuiController : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         Time.timeScale = 1;
+    }
+
+
+    public static void SetStaticHealth(int health)
+    {
+        if (instance)
+            instance.SetHealth(health);
+        else
+        {
+            staticHealth = health;
+        }
+    }
+    
+    
+    public static void SetStaticPoison(int poison)
+    {
+        if (instance)
+            instance.SetPoison(poison);
+        else
+            staticPoison = poison;
+    }
+    
+    
+    public static void SetStaticScore(int score)
+    {
+        if (instance)
+            instance.SetScore(score);
+        else
+            staticScore = score;
     }
 
 
@@ -97,7 +130,7 @@ public class GuiController : MonoBehaviour
 
     public void SetScore(int score)
     {
-        scoreText.text = $"SCRAPS SCAVENGED : {0}";
+        scoreText.text = $"SCRAPS SCAVENGED : {score}";
     }
 
 

@@ -43,6 +43,9 @@ namespace Player
 
         private void Start()
         {
+            //Make so the player reset correctly
+            transform.position = new Vector2(27.2f, -1.44f);
+            
             timerManager.AddTimer(DASH_DURATION_TIMER_ID, c_dashTime);
             timerManager.AddTimer(DASH_COOLDOWN_TIMER_ID, c_dashCooldown);
             timerManager.AddTimer(GUN_COOLDOWN_TIMER_ID, c_gunCooldown);
