@@ -14,11 +14,6 @@ public class Door : MonoBehaviour
     public int doorType = 0;
 
     private List<Vector2> directions = new List<Vector2> { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
-    
-    void Update()
-    {
-        
-    }
 
     public void OpenDoor()
     {
