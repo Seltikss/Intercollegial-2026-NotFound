@@ -56,5 +56,8 @@ TagManager:
   - name: Layer4
     uniqueID: 912975903
     locked: 0
+  - name: TopBackground
+    uniqueID: 3201588999
+    locked: 0
   m_RenderingLayers:
   - Default
