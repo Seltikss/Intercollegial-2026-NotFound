@@ -50,7 +50,7 @@ namespace Player
             
             GuiController.SetStaticHealth(health);
             GuiController.SetStaticPoison(poison);
-            GuiController.SetStaticScore(totalScore);
+            GuiController.SetStaticScore(score);
 
             source = GetComponent<AudioSource>();
             
@@ -127,6 +127,9 @@ namespace Player
 
         public void PickUpObjectiveItem(ObjectiveItem item)
         {
+            if (!item.isEnabled)
+                return;
+            
             hasObjectiveItems[(int) item.itemType] = true;
             item.PickUp();
             score += 1;
@@ -149,7 +152,7 @@ namespace Player
             enteredLastRoom = false;
 
             // load new scene
-            if (totalScore < c_scoreToHave)
+            if (score < c_scoreToHave)
                 SceneManager.LoadScene("StartScene");
             else
                 SceneManager.LoadScene(4);
