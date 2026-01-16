@@ -113,7 +113,9 @@ public class RoomsGeneration : MonoBehaviour
                 jumpedOnRoom = false;
             }
         }
+
         AddBossRoom(allAvailableRooms);
+        CorrectDoors(allAvailableRooms);
         DrawRooms();
     }
 
@@ -186,6 +188,14 @@ public class RoomsGeneration : MonoBehaviour
             if (hasSetBoosDoor)
                 break;
         }
+    }
+
+    private void CorrectDoors(List<Rooms> rooms)
+    {
+        for (int i = 0; i < rooms.Count; i++)
+            for (int j = 0; j < 4; j++)
+                if (rooms[i].roomLayout[j] == 2 && CheckExit(rooms[i].GridPos, j, availableNodes))
+                    rooms[i].roomLayout[j] = 0;
     }
 
     private void DrawRooms()

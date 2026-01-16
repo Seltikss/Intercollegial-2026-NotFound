@@ -38,7 +38,6 @@ public class BulletController : MonoBehaviour
         var results = Physics2D.OverlapCircleAll(transform.position, c_collRadius);
         for (int i = 0; i < results.Length; i++)
         {
-            Debug.Log(results[i].gameObject.tag);
             switch (results[i].gameObject.tag)
             {
                 case "Ground":

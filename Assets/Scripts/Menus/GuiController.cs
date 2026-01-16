@@ -2,6 +2,8 @@ using System;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GuiController : MonoBehaviour
@@ -12,13 +14,60 @@ public class GuiController : MonoBehaviour
     [SerializeField] private Slider poisonSlider;
     [SerializeField] private Image[] bulletImages = new Image[PlayerData.MAX_BULLET];
     
-    [SerializeField] private float c_healthBarLimit = 0.5f;
-    [SerializeField] private float c_poisonBarLimit = 0.5f;
+    [SerializeField] private InputActionReference pauseMenuInput;
+    
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject pauseScreen;
+
+    private bool pauseMenuInputPressed = false;
 
 
     private void Start()
     {
         instance = this;
+        pauseScreen.SetActive(false);
+        winScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+    }
+
+
+    public void OnRetryButton()
+    {
+        // SceneManager.LoadScene(1);
+    }
+    
+    
+    public void OnGoBackButton()
+    {
+        Debug.Log("Test");
+        SceneManager.LoadScene(0);
+    }
+
+    
+    public void EnableWinScreen()
+    {
+        
+    }
+    
+    
+    public void EnableGameOverScreen()
+    {
+        
+    }
+    
+    
+    public void EnablePauseScreen()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+    
+    
+    public void DisablePauseScreen()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
@@ -42,5 +91,23 @@ public class GuiController : MonoBehaviour
         {
             bulletImages[i].enabled = i < left;
         }
+    }
+
+
+    public void Update()
+    {
+        if (pauseMenuInput.action.IsPressed() && !pauseMenuInputPressed)
+        {
+            if (pauseScreen.activeSelf)
+                DisablePauseScreen();
+            else
+                EnablePauseScreen();
+            pauseMenuInputPressed = true;
+        }
+        else if (!pauseMenuInput.action.IsPressed())
+        {
+            pauseMenuInputPressed = false;
+        }
+            
     }
 }
