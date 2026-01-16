@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700264097529444694, guid: 3478cd17f84ebb34a8bb95ebb389fa3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8744593782998672597, guid: 3478cd17f84ebb34a8bb95ebb389fa3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4358,7 +4358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1825128158952280974, guid: f439b674d9a17d8458011399dfa648c2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011700422522467099, guid: f439b674d9a17d8458011399dfa648c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5353,7 +5353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 861486000237098002, guid: fb4b0102d452ec340b285cf737bba30c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6516059778772182179, guid: fb4b0102d452ec340b285cf737bba30c, type: 3}
       propertyPath: EndRoom
